@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "frb_exoschedule"
+description = "Auto Scheduling FRB NenuFAR"
+dynamic = ["version"]
+authors = [
+    { name = "Alan Loh", email = "alan.loh@obspm.fr" }
+]
+requires-python = ">=3.8"
+classifiers=[
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research"
+]
+readme = "README.md"
+dependencies = [
+    "nenupy"
+]
+
+[tool.setuptools]
+script-files = [
+    "frb_autoschedule/bin/autoschedule"
+]
+
+[tool.setuptools.packages.find]
+include = ["frb_autoschedule", "frb_autoschedule.*"]
+exclude = []
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = [
+    "--import-mode=importlib",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "frb_autoschedule.__version__"}

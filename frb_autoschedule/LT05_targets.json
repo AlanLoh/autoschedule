@@ -1,0 +1,203 @@
+{
+    "FRB20251229A": {
+        "name": "FRB20251229A",
+        "category": "FRB",
+        "ra": "20:41:23.81",
+        "dec": "+16:01:51.34",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20240316A": {
+        "name": "FRB20240316A",
+        "category": "FRB",
+        "ra": "23:38:16.8",
+        "dec": "+32:19:48.0",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20220529": {
+        "name": "FRB20220529",
+        "category": "FRB",
+        "ra": "01:16:25.014",
+        "dec": "+20:37:56.6",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20250316A": {
+        "name": "FRB20250316A",
+        "category": "FRB",
+        "ra": "12:09:44.31",
+        "dec": "+58:50:56.70",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20240209A": {
+        "name": "FRB20240209A",
+        "category": "FRB",
+        "ra": "19:19:33.67",
+        "dec": "+86:03:57.04",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20240114A": {
+        "name": "FRB20240114A",
+        "category": "FRB",
+        "ra": "21:27:39.835",
+        "dec": "+04:19:45.634",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20190212A": {
+        "name": "FRB20190212A",
+        "category": "FRB",
+        "ra": "17:39:28.800",
+        "dec": "+81:37:48.00",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20180916B": {
+        "name": "FRB20180916B",
+        "category": "FRB",
+        "ra": "01:56:40.0",
+        "dec": "+65:44:23.0",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5,
+        "periodicity_start": "2026-06-11T00:00:00",
+        "periodicity_jd": 16,
+        "tolerance_jd": 4
+    },
+    "FRB20200120E": {
+        "name": "FRB20200120E",
+        "category": "FRB",
+        "ra": "09:45:00.0",
+        "dec": "+68:46:12.0",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20181030A": {
+        "name": "FRB20181030A",
+        "category": "FRB",
+        "ra": "10:52:48.0",
+        "dec": "+73:44:24.0",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20180814A": {
+        "name": "FRB20180814A",
+        "category": "FRB",
+        "ra": "04:21:28.800",
+        "dec": "+73:44:24.00",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20180908B": {
+        "name": "FRB20180908B",
+        "category": "FRB",
+        "ra": "12:31:31.200",
+        "dec": "+74:13:12.00",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20220912A": {
+        "name": "FRB20220912A",
+        "category": "FRB",
+        "ra": "23:09:10.296",
+        "dec": "+48:41:56.40",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB20190303A": {
+        "name": "FRB20190303A",
+        "category": "FRB",
+        "ra": "13:52:19.200",
+        "dec": "+48:15:00.00",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB151125": {
+        "name": "FRB151125",
+        "category": "FRB",
+        "ra": "01:31:00.0",
+        "dec": "+30:58:48.0",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "FRB190907": {
+        "name": "FRB190907",
+        "category": "FRB",
+        "ra": "08:09:00.0",
+        "dec": "+46:16:00.0",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "SGR1935+2154": {
+        "name": "SGR1935+2154",
+        "category": "SGR",
+        "ra": "19:34:55.68",
+        "dec": "+21:53:48.2",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 4.5
+    },
+    "B0329+54": {
+        "name": "B0329+54",
+        "category": "CAL",
+        "ra": "03:32:59.37",
+        "dec": "+54:34:43.5",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 1
+    },
+    "B0809+74": {
+        "name": "B0809+74",
+        "category": "CAL",
+        "ra": "08:14:59.50",
+        "dec": "+74:29:05.8",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 1
+    },
+    "B2217+47": {
+        "name": "B2217+47",
+        "category": "CAL",
+        "ra": "22:19:48.14",
+        "dec": "+47:54:53.9",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 1
+    },
+    "B1919+21": {
+        "name": "B1919+21",
+        "category": "CAL",
+        "ra": "19:21:44.82",
+        "dec": "+21:53:02.3",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 1
+    },
+    "B1508+55": {
+        "name": "B1508+55",
+        "category": "CAL",
+        "ra": "15:09:25.63",
+        "dec": "+55:31:32.4",
+        "min_elevation_deg": 40,
+        "min_angular_distance_from_sun_deg": 30,
+        "duration_hours": 1
+    }
+}
