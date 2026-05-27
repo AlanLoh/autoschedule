@@ -1,0 +1,118 @@
+#! /usr/bin/python3
+# -*- coding: utf-8 -*-
+
+__author__ = "Alan Loh"
+__copyright__ = "Copyright 2026, frb_autoschedule"
+__credits__ = ["Alan Loh"]
+__maintainer__ = "Alan"
+__email__ = "alan.loh@obspm.fr"
+__status__ = "Production"
+__all__ = [
+    "parse_arguments"
+]
+
+import argparse
+from astropy.time import Time, TimeDelta
+import glob, os
+import logging
+log = logging.getLogger("frb_autoschedule")
+
+
+from frb_autoschedule import FRB_DICT, PSR_DICT
+from frb_autoschedule.schedule import build_observation_blocks, schedule_from_vcr, book_observations, plot_schedule
+
+
+# ============================================================= #
+# ------------------------- book_frbs ------------------------- #
+def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, output_path: str):
+    observation_blocks = build_observation_blocks(
+        source_dict=FRB_DICT,
+        time_min=schedule_start,
+        time_max=schedule_end
+    )
+    schedule = schedule_from_vcr(
+        vcr_current_booking=vcr_booking_file,
+        start_time=schedule_start,
+        stop_time=schedule_end
+    )
+    schedule = book_observations(
+        schedule=schedule,
+        observation_blocks=observation_blocks
+    )
+
+    plot_schedule(
+        schedule=schedule,
+        fig_name=os.path.join(output_path, "FRB_Schedule.pdf")
+    )
+
+
+# ============================================================= #
+# ---------------------- argument_parser ---------------------- #
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-t0", "--time_min", type=str, required=True,
+        help="Start time (UTC, ISOT format)."
+    )
+    parser.add_argument(
+        "-t1", "--time_max", type=str, required=False,
+        help="Stop time (UTC, ISOT format). If not set, the default is t0 + 6 months."
+    )
+    # # parser.add_argument(
+    # #     "-u", "--update_data", type=bool, required=False, default=True,
+    # #     help="Update the exposure time in the JSON files."
+    # # )
+    # parser.add_argument("-u", "--update_data", action="store_true", help="Update the exposure time in the JSON files.")
+    # parser.add_argument("-nu", "--no-update_data", dest="update_data", action="store_false", help="Do not update the exposure time in the JSON files.")
+    # parser.set_defaults(update_data=True)
+    parser.add_argument(
+        "-b", "--vcr_booking_csv", type=str, required=False, default=None,
+        help="CSV booking file downloaded from the VCR. By default, will search for '*booking.csv' in --output_path"
+    )
+    parser.add_argument(
+        "-o", "--output_path", type=str, required=True,
+        help="Where every result / parset will be written."
+    )
+    # parser.add_argument(
+    #     "-n", "--max_repetitions", type=int, required=False, default=2,
+    #     help="Maximum number of observations per target."
+    # )
+    # parser.add_argument("-m", "--merge_existing_booking", action="store_true", help="Merge with exisiting booking")
+    # parser.add_argument("-nm", "--no-merge_existing_booking", dest="merge_existing_booking", action="store_false", help="Do not merge with exisiting booking (default)")
+    # parser.set_defaults(merge_existing_booking=False)
+
+    # parser.add_argument("-e", "--only_existing_booking", action="store_true", help="Constrain the booking on existing slots")
+    # parser.add_argument("-ne", "--no-only_existing_booking", dest="only_existing_booking", action="store_false", help="Do not constrain the booking on existing slots (default)")
+    # parser.set_defaults(only_existing_booking=False)
+
+    # parser.add_argument(
+    #     "-s", "--priority_source", nargs="*", required=False, default=[],
+    #     help="Set these sources as priority targets"
+    # )
+    # parser.add_argument("-i", "--add_imaging", action="store_true", help="Add imaging observations.")
+    # parser.add_argument("-ni", "--no-add_imaging", dest="add_imaging", action="store_false", help="Do not add imaging observations.")
+    # parser.set_defaults(add_imaging=False)
+    # parser.add_argument(
+    #     "-si", "--imaging_sources", nargs="*", required=False, default=[],
+    #     help="Add these sources in imaging mode"
+    # )
+    args = parser.parse_args()
+    return args
+
+
+# ============================================================= #
+# --------------------------- main ---------------------------- #
+if __name__ == "__main__":
+
+    args = parse_arguments()
+
+    book_frbs(
+        schedule_start=Time(args.time_min, format="isot"),
+        schedule_end=Time(args.time_max, format="isot"),
+        vcr_booking_file=args.vcr_booking_csv,
+        output_path=args.output_path
+    )
+
+
+# ============================================================= #
+# ============================================================= #

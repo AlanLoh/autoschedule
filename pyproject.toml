@@ -21,7 +21,7 @@ dependencies = [
 
 [tool.setuptools]
 script-files = [
-    "frb_autoschedule/bin/autoschedule"
+    "frb_autoschedule/bin/frbschedule"
 ]
 
 [tool.setuptools.packages.find]
