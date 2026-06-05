@@ -18,6 +18,10 @@ pip install https://github.com/AlanLoh/autoschedule/tarball/master --upgrade
 
 To produce a schedule:
 ```
-frbschedule -t0 2026-06-01T00:00:00 -t1 2026-12-01T00:00:00  -o /path/to/store/results/
+frbschedule -t0 2026-06-01T00:00:00 -t1 2026-12-01T00:00:00 -o /path/to/store/results/
 ```
 
+If there are constrained observations to avoid:
+```
+frbschedule -t0 2026-06-01T00:00:00 -t1 2026-12-01T00:00:00 -x /path/to/excel/file/semester_constrained_obs.xlsx -o /path/to/store/results/
+```

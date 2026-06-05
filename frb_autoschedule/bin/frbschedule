@@ -24,7 +24,7 @@ from frb_autoschedule.schedule import build_observation_blocks, schedule_from_vc
 
 # ============================================================= #
 # ------------------------- book_frbs ------------------------- #
-def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, output_path: str):
+def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, constrained_obs_file: str, output_path: str):
     observation_blocks = build_observation_blocks(
         source_dict=FRB_DICT,
         time_min=schedule_start,
@@ -32,6 +32,7 @@ def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, o
     )
     schedule = schedule_from_vcr(
         vcr_current_booking=vcr_booking_file,
+        constrained_obs_file=constrained_obs_file,
         start_time=schedule_start,
         stop_time=schedule_end
     )
@@ -67,7 +68,11 @@ def parse_arguments():
     # parser.set_defaults(update_data=True)
     parser.add_argument(
         "-b", "--vcr_booking_csv", type=str, required=False, default=None,
-        help="CSV booking file downloaded from the VCR. By default, will search for '*booking.csv' in --output_path"
+        help="CSV booking file downloaded from the VCR. The FRB observations are limited to those booking if a file is provided."
+    )
+    parser.add_argument(
+        "-x", "--obs_constrained_xls", type=str, required=False, default=None,
+        help="Excel booking file as produced at the start of each NenuFAR cycle. This one is expected to contain only the constrained observations and prevent any upcoming bookings at those times (if provided)."
     )
     parser.add_argument(
         "-o", "--output_path", type=str, required=True,
@@ -110,6 +115,7 @@ if __name__ == "__main__":
         schedule_start=Time(args.time_min, format="isot"),
         schedule_end=Time(args.time_max, format="isot"),
         vcr_booking_file=args.vcr_booking_csv,
+        constrained_obs_file=args.obs_constrained_xls,
         output_path=args.output_path
     )
 

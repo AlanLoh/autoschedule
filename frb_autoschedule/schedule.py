@@ -124,7 +124,8 @@ def build_observation_blocks(source_dict: dict, time_min: Time, time_max: Time) 
 def schedule_from_vcr(
         start_time: Time,
         stop_time: Time,
-        vcr_current_booking: str = None
+        vcr_current_booking: str = None,
+        constrained_obs_file: str = None
     ) -> Schedule:
     """Computes a list of free booking slots from the current VCR booking schedule.
 
@@ -136,6 +137,8 @@ def schedule_from_vcr(
     ----------
     vcr_current_booking : str
         VCR booking file (that can be downloaded via 'https://gui-nenufar.obs-nancay.fr/' > 'Booking' > 'Current Booking.csv')
+    constrained_obs_file: str
+        Excel file containing time slots to be converted to ReservedBlocks.
     start_time : Time
         Start time at which a new booking will be considered
     stop_time : Time
@@ -155,6 +158,16 @@ def schedule_from_vcr(
             booking_file=vcr_current_booking,
             key_program=KP_CODE
         )
+
+    if not (constrained_obs_file is None):
+        contrained_calendar = NenuCalendar.from_xls(constrained_obs_file)
+        for evt in contrained_calendar.events:
+            schedule.insert(
+                ReservedBlock(
+                    time_min=Time(evt.event.begin.datetime, format="datetime"),
+                    time_max=Time(evt.event.end.datetime, format="datetime")
+                )
+            )
 
     return schedule
 
