@@ -174,14 +174,16 @@ def schedule_from_vcr(
 
 # ============================================================= #
 # --------------------- book_observations --------------------- #
-def book_observations(schedule: Schedule, observation_blocks: ObsBlock) -> Schedule:
+def book_observations(schedule: Schedule, observation_blocks: ObsBlock, day_hours: float, night_hours: float) -> Schedule:
 
     schedule.insert(observation_blocks)
 
     schedule.book(
         very_strict=False,
         reset_booking=True,
-        minimal_score=0.7
+        day_hours=day_hours,
+        night_hours=night_hours,
+        sort_by_availability=True
     )
 
     results = schedule.export()

@@ -24,7 +24,7 @@ from frb_autoschedule.schedule import build_observation_blocks, schedule_from_vc
 
 # ============================================================= #
 # ------------------------- book_frbs ------------------------- #
-def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, constrained_obs_file: str, output_path: str):
+def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, constrained_obs_file: str, output_path: str, day_hours: float = None, night_hours: float = None):
     observation_blocks = build_observation_blocks(
         source_dict=FRB_DICT,
         time_min=schedule_start,
@@ -38,7 +38,9 @@ def book_frbs(schedule_start: Time, schedule_end: Time, vcr_booking_file: str, c
     )
     schedule = book_observations(
         schedule=schedule,
-        observation_blocks=observation_blocks
+        observation_blocks=observation_blocks,
+        day_hours=day_hours,
+        night_hours=night_hours
     )
 
     plot_schedule(
@@ -78,6 +80,14 @@ def parse_arguments():
         "-o", "--output_path", type=str, required=True,
         help="Where every result / parset will be written."
     )
+    parser.add_argument(
+        "-d", "--day_hours", type=float, required=False, default=None,
+        help="Day hours allocated to the scientific program."
+    )
+    parser.add_argument(
+        "-n", "--night_hours", type=float, required=False, default=None,
+        help="Night hours allocated to the scientific program."
+    )
     # parser.add_argument(
     #     "-n", "--max_repetitions", type=int, required=False, default=2,
     #     help="Maximum number of observations per target."
@@ -116,7 +126,9 @@ if __name__ == "__main__":
         schedule_end=Time(args.time_max, format="isot"),
         vcr_booking_file=args.vcr_booking_csv,
         constrained_obs_file=args.obs_constrained_xls,
-        output_path=args.output_path
+        output_path=args.output_path,
+        day_hours=args.day_hours,
+        night_hours=args.night_hours
     )
 
 
